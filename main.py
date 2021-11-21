@@ -6,14 +6,15 @@ from socket import gethostbyname
 
 import jwt
 import uvicorn
-from fastapi import FastAPI, Depends, status
+from fastapi import Depends, FastAPI, status
 from fastapi.exceptions import HTTPException
 from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from passlib.hash import bcrypt
 from tortoise.contrib.fastapi import register_tortoise
 
-from models.authenticator import authenticate_user, get_current_user, JWT_SECRET
+from models.authenticator import (JWT_SECRET, authenticate_user,
+                                  get_current_user)
 from models.classes import Login
 from models.user_models import CustomModels
 
@@ -31,6 +32,7 @@ app = FastAPI(
 
 @app.on_event(event_type='startup')
 async def startup_event():
+    """Runs during startup. Configures custom logging using LogConfig."""
     from models.config import LogConfig
     dictConfig(config=LogConfig().dict())
 
