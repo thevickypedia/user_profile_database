@@ -3,7 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# PyCharm
 .idea
+
+# Database Created by main.py
+db*
 
 # C extensions
 *.so
