@@ -12,6 +12,7 @@ from fastapi.responses import RedirectResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from passlib.hash import bcrypt
 from tortoise.contrib.fastapi import register_tortoise
+from tortoise.contrib.pydantic import PydanticModel
 
 from models.authenticator import (JWT_SECRET, authenticate_user,
                                   get_current_user)
@@ -31,7 +32,7 @@ app = FastAPI(
 
 
 @app.on_event(event_type='startup')
-async def startup_event():
+async def startup_event() -> None:
     """Runs during startup. Configures custom logging using LogConfig."""
     from models.config import LogConfig
     dictConfig(config=LogConfig().dict())
@@ -61,20 +62,22 @@ def health() -> dict:
 
 @app.post('/generate-token')  # Endpoint should match with the tokenUrl of oauth2_scheme in authenticator.py
 async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()) -> dict:
-    """# Generates a jwt for the credentials received.
+    """Generates a jwt for the credentials received.
 
-    ## Args:
-    **form_data:** Takes the ``OAuth2PasswordRequestForm`` model as an argument.
+    Args:
+        form_data: Takes the ``OAuth2PasswordRequestForm`` model as an argument.
 
-    ## Returns:
-    Returns a dictionary of ``access_token`` and ``token_type``
+    Returns:
+        dict:
+        Returns a dictionary of ``access_token`` and ``token_type``
 
-    ## See Also:
-    **- This function is enabled only for test purpose.**
+    See Also:
 
-    **- The actual working of the working is done using the endpoint ``generate-token``**
+        - This function is enabled only for test purpose.
 
-    **- It is passed as ``tokenUrl`` to the ``fastapi`` class ``OAuth2PasswordBearer`` which is our ``oauth2_scheme``**
+        - The actual working of the working is done using the endpoint ``generate-token``
+
+        - It is passed as ``tokenUrl`` to the ``fastapi`` class ``OAuth2PasswordBearer`` which is our ``oauth2_scheme``
     """
     user = await authenticate_user(form_data.username, form_data.password)
     if not user:
@@ -85,13 +88,14 @@ async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()) -> di
 
 
 @app.post('/create-user', response_model=custom_models.User_Model)
-async def create_user(user: custom_models.User_i_Model):
-    """# Creates a new user profile and stores it in the database.
+async def create_user(user: custom_models.User_i_Model) -> PydanticModel:
+    """Creates a new user profile and stores it in the database.
 
-    ## Args:
+    Args:
         user: Takes the internal user profile model as an argument.
 
-    ## Returns:
+    Returns:
+        PydanticModel:
         Returns a PyDantic model.
     """
     user_obj = Login(username=user.username, password_hash=bcrypt.hash(user.password))
@@ -102,16 +106,17 @@ async def create_user(user: custom_models.User_i_Model):
 
 
 @app.get('/authenticate', response_model=custom_models.User_Model)
-async def authenticate(user: custom_models.User_Model = Depends(get_current_user)):
-    """# Authenticates any user per the information stored in the database.
+async def authenticate(user: custom_models.User_Model = Depends(get_current_user)) -> PydanticModel:
+    """Authenticates any user per the information stored in the database.
 
-    ## Args:
+    Args:
         user: Takes the User_Pydantic model as an argument.
 
-    ## Returns:
+    Returns:
+        PydanticModel:
         Returns the user profile information.
 
-    ## See Also:
+    See Also:
         This is just a placeholder, and a method for further development.
     """
     return user
@@ -131,7 +136,7 @@ if __name__ == '__main__':
     argument_dict = {
         "app": f"{__module__ or __name__}:app",
         "host": gethostbyname('localhost'),
-        "port": int(environ.get('port', 1918)),
+        "port": int(environ.get('port', 1939)),
         "reload": True
     }
     uvicorn.run(**argument_dict)

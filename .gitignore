@@ -9,6 +9,9 @@ __pycache__/
 # Database Created by main.py
 db*
 
+# Sphinx
+_build
+
 # C extensions
 *.so
 
