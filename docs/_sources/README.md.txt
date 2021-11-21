@@ -21,3 +21,13 @@ Clean code with pre-commit hooks: [`flake8`](https://flake8.pycqa.org/en/latest/
 **Usage**
 <br>
 `pre-commit run --all-files`
+
+### Runbook
+[![made-with-sphinx-doc](https://img.shields.io/badge/Code%20Docs-Sphinx-1f425f.svg)](https://www.sphinx-doc.org/en/master/man/sphinx-autogen.html)
+
+[https://thevickypedia.github.io/user_profile_database/](https://thevickypedia.github.io/user_profile_database/)
+
+## License & copyright
+&copy; Vignesh Sivanandha Rao
+
+Licensed under the [MIT License](https://github.com/thevickypedia/Jarvis/blob/master/LICENSE)
