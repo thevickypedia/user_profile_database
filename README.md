@@ -1,2 +1,2 @@
-# user_profile_database
+# UserProfile Database
 A database created using FastAPI to create and maintain UserProfiles
