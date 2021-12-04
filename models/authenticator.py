@@ -45,7 +45,7 @@ async def get_current_user(token: str = Depends(oauth2_scheme)):
         Returns a ``pydantic`` model.
     """
     try:
-        payload = jwt.decode(token, JWT_SECRET, algorithms=['HS256'])
+        payload = jwt.decode(jwt=token, key=JWT_SECRET, algorithms=['HS256'])
         user = await Login.get(id=payload.get('id'))
     except jwt.exceptions.DecodeError as error:
         LOGGER.error(error.__class__.__name__)

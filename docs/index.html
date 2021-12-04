@@ -194,11 +194,11 @@
 </dd></dl>
 
 </section>
-<section id="module-models.classes">
-<span id="models-classes"></span><h1>Models - Classes<a class="headerlink" href="#module-models.classes" title="Permalink to this headline">¶</a></h1>
+<section id="models-classes">
+<h1>Models - Classes<a class="headerlink" href="#models-classes" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="models.classes.CreateLogin">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.classes.</span></span><span class="sig-name descname"><span class="pre">CreateLogin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.classes.CreateLogin" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.classes.</span></span><span class="sig-name descname"><span class="pre">CreateLogin</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tortoise.models.Model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.classes.CreateLogin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a datastructure with keys, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password</span></code>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CreateLogin</span>
 </pre></div>
@@ -207,14 +207,14 @@
 
 <dl class="py class">
 <dt class="sig sig-object py" id="models.classes.Login">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.classes.</span></span><span class="sig-name descname"><span class="pre">Login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.classes.Login" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.classes.</span></span><span class="sig-name descname"><span class="pre">Login</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tortoise.models.Model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.classes.Login" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates a datastructure with keys, <code class="docutils literal notranslate"><span class="pre">id</span></code>, <code class="docutils literal notranslate"><span class="pre">username</span></code> and <code class="docutils literal notranslate"><span class="pre">password_hash</span></code>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Login</span>
 </pre></div>
 </div>
 <dl class="py method">
 <dt class="sig sig-object py" id="models.classes.Login.verify_password">
-<span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#models.classes.Login.verify_password" title="Permalink to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">password</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">str</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><span class="pre">bool</span></span></span><a class="headerlink" href="#models.classes.Login.verify_password" title="Permalink to this definition">¶</a></dt>
 <dd><p>Verifies encrypted version of the password entered by the user.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters</dt>
@@ -232,11 +232,11 @@
 </dd></dl>
 
 </section>
-<section id="module-models.config">
-<span id="models-custom-logging"></span><h1>Models - Custom Logging<a class="headerlink" href="#module-models.config" title="Permalink to this headline">¶</a></h1>
+<section id="models-custom-logging">
+<h1>Models - Custom Logging<a class="headerlink" href="#models-custom-logging" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="models.config.LogConfig">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.config.</span></span><span class="sig-name descname"><span class="pre">LogConfig</span></span><a class="headerlink" href="#models.config.LogConfig" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.config.</span></span><span class="sig-name descname"><span class="pre">LogConfig</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pydantic.BaseModel</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.config.LogConfig" title="Permalink to this definition">¶</a></dt>
 <dd><p>Custom log configuration that matches uvicorn log format.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">LogConfig</span>
 </pre></div>
@@ -248,16 +248,14 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">LOG_FORMAT</span></code> is set to match the format of <code class="docutils literal notranslate"><span class="pre">uvicorn.access</span></code> logs.</p></li>
 </ul>
 </div>
-<p>Create a new model by parsing and validating input data from keyword arguments.</p>
-<p>Raises ValidationError if the input data cannot be parsed to form a valid model.</p>
 </dd></dl>
 
 </section>
-<section id="module-models.user_models">
-<span id="models-user-models"></span><h1>Models - User Models<a class="headerlink" href="#module-models.user_models" title="Permalink to this headline">¶</a></h1>
+<section id="models-user-models">
+<h1>Models - User Models<a class="headerlink" href="#models-user-models" title="Permalink to this headline">¶</a></h1>
 <dl class="py class">
 <dt class="sig sig-object py" id="models.user_models.CustomModels">
-<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.user_models.</span></span><span class="sig-name descname"><span class="pre">CustomModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">Any</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.user_models.CustomModels" title="Permalink to this definition">¶</a></dt>
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">models.user_models.</span></span><span class="sig-name descname"><span class="pre">CustomModels</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">tortoise.models.Model</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#models.user_models.CustomModels" title="Permalink to this definition">¶</a></dt>
 <dd><p>Creates custom models using <code class="docutils literal notranslate"><span class="pre">pydantic_model_creator</span></code> for <code class="docutils literal notranslate"><span class="pre">User_Model</span></code> and <code class="docutils literal notranslate"><span class="pre">User_i_Model</span></code>.</p>
 <div class="doctest highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">CustomModels</span>
 </pre></div>
@@ -269,18 +267,6 @@
 <li><p><code class="docutils literal notranslate"><span class="pre">User_i_Model</span></code>: Used only to create the main user profile.</p></li>
 </ul>
 </div>
-<dl class="py attribute">
-<dt class="sig sig-object py" id="models.user_models.CustomModels.User_Model">
-<span class="sig-name descname"><span class="pre">User_Model</span></span><a class="headerlink" href="#models.user_models.CustomModels.User_Model" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.user</span></code></p>
-</dd></dl>
-
-<dl class="py attribute">
-<dt class="sig sig-object py" id="models.user_models.CustomModels.User_i_Model">
-<span class="sig-name descname"><span class="pre">User_i_Model</span></span><a class="headerlink" href="#models.user_models.CustomModels.User_i_Model" title="Permalink to this definition">¶</a></dt>
-<dd><p>alias of <code class="xref py py-class docutils literal notranslate"><span class="pre">abc.UserIn</span></code></p>
-</dd></dl>
-
 </dd></dl>
 
 </section>
@@ -305,9 +291,9 @@
 <li><a class="reference internal" href="#">Welcome to UserProfile Database’s documentation!</a></li>
 <li><a class="reference internal" href="#module-main">UserProfile - Main Module</a></li>
 <li><a class="reference internal" href="#module-models.authenticator">Models - Authenticator</a></li>
-<li><a class="reference internal" href="#module-models.classes">Models - Classes</a></li>
-<li><a class="reference internal" href="#module-models.config">Models - Custom Logging</a></li>
-<li><a class="reference internal" href="#module-models.user_models">Models - User Models</a></li>
+<li><a class="reference internal" href="#models-classes">Models - Classes</a></li>
+<li><a class="reference internal" href="#models-custom-logging">Models - Custom Logging</a></li>
+<li><a class="reference internal" href="#models-user-models">Models - User Models</a></li>
 <li><a class="reference internal" href="#indices-and-tables">Indices and tables</a></li>
 </ul>
 

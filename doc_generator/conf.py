@@ -61,10 +61,6 @@ html_theme_options = {
 html_static_path = ['_static']
 
 
-# Add docstrings from __init__ method
-# Reference: https://www.sphinx-doc.org/en/master/usage/extensions/autodoc.html#confval-autoclass_content
-autoclass_content = 'both'
-
 # Add support to mark down files in sphinx documentation
 # Reference: https://www.sphinx-doc.org/en/1.5.3/markdown.html
 source_suffix = {

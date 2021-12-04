@@ -19,9 +19,10 @@ from models.authenticator import (JWT_SECRET, authenticate_user,
 from models.classes import Login
 from models.user_models import CustomModels
 
-__module__ = PurePath(__file__).stem
-LOGGER = getLogger(__module__)
-environ['module'] = __module__
+MODULE = PurePath(__file__).stem  # Name of this file
+DATABASE = "UserProfiles"
+LOGGER = getLogger(MODULE)
+environ['module'] = MODULE
 custom_models = CustomModels
 
 app = FastAPI(
@@ -83,7 +84,7 @@ async def generate_token(form_data: OAuth2PasswordRequestForm = Depends()) -> di
     if not user:
         raise HTTPException(status_code=401, detail=status.HTTP_401_UNAUTHORIZED)
     user_obj = await custom_models.User_Model.from_tortoise_orm(obj=user)
-    token = jwt.encode(user_obj.dict(), JWT_SECRET)
+    token = jwt.encode(payload=user_obj.dict(), key=JWT_SECRET, algorithm='HS256')
     return {'access_token': token, 'token_type': 'bearer'}
 
 
@@ -100,7 +101,7 @@ async def create_user(user: custom_models.User_i_Model) -> PydanticModel:
     """
     user_obj = Login(username=user.username, password_hash=bcrypt.hash(user.password))
     await user_obj.save()
-    LOGGER.info('sqlite3 db.UserProfiles')
+    LOGGER.info(f'sqlite3 db.{DATABASE}')
     LOGGER.info('SELECT * FROM login;')
     return await custom_models.User_Model.from_tortoise_orm(obj=user_obj)
 
@@ -124,17 +125,18 @@ async def authenticate(user: custom_models.User_Model = Depends(get_current_user
 
 register_tortoise(
     app=app,
-    db_url='sqlite://db.UserProfiles',
+    db_url=f'sqlite://db.{DATABASE}',
     modules={
-        'models': [__module__]
+        'models': [MODULE]
     },
     generate_schemas=True,
     add_exception_handlers=True
 )
 
+
 if __name__ == '__main__':
     argument_dict = {
-        "app": f"{__module__ or __name__}:app",
+        "app": f"{MODULE or __name__}:app",
         "host": gethostbyname('localhost'),
         "port": int(environ.get('port', 1939)),
         "reload": True

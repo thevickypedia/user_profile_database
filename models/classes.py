@@ -13,7 +13,7 @@ class Login(Model):
     username = fields.CharField(50, unique=True)
     password_hash = fields.CharField(128)
 
-    def verify_password(self, password) -> bool:
+    def verify_password(self, password: str) -> bool:
         """Verifies encrypted version of the password entered by the user.
 
         Args:
@@ -23,7 +23,7 @@ class Login(Model):
             bool:
             Returns a boolean flag with the result of verification.
         """
-        return bcrypt.verify(password, self.password_hash)
+        return bcrypt.verify(secret=password, hash=self.password_hash)
 
 
 class CreateLogin(Model):

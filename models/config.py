@@ -13,27 +13,25 @@ class LogConfig(BaseModel):
         - ``LOG_FORMAT`` is set to match the format of ``uvicorn.access`` logs.
     """
 
-    if not environ.get('COMMIT'):
-        LOGGER_NAME: str = environ['module']
-        LOG_FORMAT: str = '%(levelname)s:\t  %(message)s'
-        LOG_LEVEL: str = "DEBUG"
+    LOGGER_NAME = environ['module']
+    LOG_FORMAT = '%(levelname)s:\t  %(message)s'
 
-        version = 1
-        disable_existing_loggers = False
-        formatters = {
-            "default": {
-                "()": "uvicorn.logging.DefaultFormatter",
-                "fmt": LOG_FORMAT,
-                "datefmt": None,
-            }
+    version = 1
+    disable_existing_loggers = False
+    formatters = {
+        "default": {
+            "()": "uvicorn.logging.DefaultFormatter",
+            "fmt": LOG_FORMAT,
+            "datefmt": None,
         }
-        handlers = {
-            "default": {
-                "formatter": "default",
-                "class": "logging.StreamHandler",
-                "stream": "ext://sys.stderr",
-            }
+    }
+    handlers = {
+        "default": {
+            "formatter": "default",
+            "class": "logging.StreamHandler",
+            "stream": "ext://sys.stderr",
         }
-        loggers = {
-            LOGGER_NAME: {"handlers": ["default"], "level": LOG_LEVEL},
-        }
+    }
+    loggers = {
+        LOGGER_NAME: {"handlers": ["default"], "level": "DEBUG"},
+    }

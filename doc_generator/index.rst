@@ -30,23 +30,28 @@ Models - Authenticator
 Models - Classes
 ================
 
-.. automodule:: models.classes
+.. autoclass:: models.classes.CreateLogin(tortoise.models.Model)
+   :members:
+   :undoc-members:
+
+.. autoclass:: models.classes.Login(tortoise.models.Model)
    :members:
    :undoc-members:
 
 Models - Custom Logging
 =======================
 
-.. automodule:: models.config
+.. autoclass:: models.config.LogConfig(pydantic.BaseModel)
    :members:
    :undoc-members:
 
 Models - User Models
 ====================
 
-.. automodule:: models.user_models
+.. autoclass:: models.user_models.CustomModels(tortoise.models.Model)
    :members:
    :undoc-members:
+   :exclude-members: User_Model, User_i_Model
 
 
 Indices and tables
